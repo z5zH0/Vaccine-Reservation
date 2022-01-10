@@ -8,7 +8,7 @@ void User::confirm() const
 {
 	cout << endl << "[예약자 정보]" << endl;
 	cout << "이름: " << name << endl;
-	cout << "주민번호: " << setw(13) << right << setfill('0') << id << endl;
+	cout << "주민번호: " << setw(6) << right << setfill('0') << birth << "-" << setw(7) << code << endl;
 	cout << endl << "입력하신 정보가 맞습니까?" << endl;
 	cout << "1. 예 2. 아니오 (숫자로 입력)" << endl;
 }
@@ -18,7 +18,7 @@ void User::getName() const {
 }
 
 void User::getId() const {
-	cout << "주민번호: " << id << endl;
+	cout << "주민번호: " << setw(6) << right << setfill('0') << birth << "-" << setw(7) << code << endl;
 }
 
 void User::setInfo() {
@@ -32,9 +32,11 @@ void User::setInfo() {
 	cout << endl << "예약자의 이름을 입력하세요." << endl;
 	cin >> name;
 	setName(name);
-	cout << endl << "예약자의 주민번호를 입력하세요." << endl;
-	cin >> id;
-	setId(id);
+	cout << endl << "예약자의 주민번호 앞자리를 입력하세요." << endl;
+	cin >> birth;
+	cout << endl << "예약자의 주민번호 뒷자리를 입력하세요." << endl;
+	cin >> code;
+	setId(birth, code);
 	cout << endl << "예약자의 2차 백신 접종 여부를 입력하세요." << endl;
 	cout << "1. 접종 완료 2. 미접종 (숫자로 입력)" << endl;
 	cin >> input;
@@ -48,8 +50,9 @@ void User::setName(string n) {
 	name = n;
 }
 
-void User::setId(long i) {
-	id = i;
+void User::setId(int b, int c) {
+	birth = b;
+	code = c;
 }
 
 void User::setSV(bool SV) {

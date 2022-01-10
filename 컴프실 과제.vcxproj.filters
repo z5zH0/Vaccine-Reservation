@@ -26,7 +26,10 @@
     <ClCompile Include="app.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="VaccineList.cpp">
+    <ClCompile Include="Vaccine.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Functions.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
