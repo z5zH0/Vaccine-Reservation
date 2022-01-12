@@ -9,6 +9,9 @@
 using namespace std;
 
 
+
+
+
 // ----------사용자 클래스----------
 class User {
 
@@ -22,11 +25,13 @@ public:
 	User(); //생성자
 	~User(); //소멸자
 
-	void confirm() const; //입력된 정보 확인 (접근자)
-	void getName() const;
-	void getId() const;
+	//접근자
+	string getName() const;
+	int getId() const;
 
 	void setInfo(); //설정자
+
+	void confirm() const; //입력받은 정보 확인
 
 private:
 	void setName(string n); //세부 설정자
@@ -40,57 +45,80 @@ private:
 // ----------백신 클래스----------
 class Vaccine {
 private:
-	string institution;
-	string Vsort;
-	string date;
-	string time;
+	string institution; //접종 기관명
+	string Vsort; //백신 종류 (모더나/화이자)
+	string date; //날짜
+	string time; //시간
 
 public:
-	Vaccine();
+	//생성자
+	Vaccine(); 
 	Vaccine(string i, string v, string d, string t);
-	~Vaccine();
-	void print() const;
-	void getInstitution() const;
-	void getVSort() const;
-	void getDate() const;
-	void getTime() const;
-	bool isModerna() const;
-	bool isPfizer() const;
+
+	~Vaccine(); //소멸자
+
+	void print() const; //출력
+
+	//접근자
+	string getInstitution() const;
+	string getVSort() const;
+	string getDate() const;
+	string getTime() const;
+
+	bool isModerna() const; //모더나 백신 체크
+	bool isPfizer() const; //화이자 백신 체크
 };
 
 
 
-
-// ---------예약 가능한 백신 리스트 클래스----------
-class VaccineList {
-private:
-	Vaccine vaccine;
-public:
-	void setInfo(Vaccine* v);
-	void choice(Vaccine* v) const;
-};
 
 
 
 
 // ----------예약 정보 클래스----------
+//예약 정보 = 사용자 + 백신
 class Reservation {
 private:
-	User user;
-	Vaccine vac;
+	User user; //사용자 객체
+	Vaccine vaccine; //백신 객체
+
+public:
+
+	//생성자
+	Reservation();
+	Reservation(User u, Vaccine v);
+
+	~Reservation(); //소멸자
+
+	void print() const; //출력
 };
+
+
+
+
 
 
 
 
 //-----------일반 함수-------------
 
-
-
+//백신 리스트 파일에서 백신 정보 가져와 배열에 담기
 void getFileAndSetInfo(Vaccine v[], int& num);
-void chooseVaccine(const Vaccine* v, int& size, int& moderna, int& pfizer);
-void showModerna(const Vaccine* v, int& size);
-void showPfizer(const Vaccine* v, int& size);
+
+//백신 예약하기
+void reserveVaccine(const User u, const Vaccine* v, const int& size, Reservation r, int& moderna, int& pfizer);
+
+//모더나 백신만 출력
+void showModerna(const Vaccine* v, const int& size);
+
+//화이자 백신만 출력
+void showPfizer(const Vaccine* v, const int& size);
+
+//모더나 백신 예약
+void reserveModerna(const User u, const Vaccine* v, Reservation r);
+
+//화이자 백신 예약
+void reservePfizer(const User u, const Vaccine* v, Reservation r);
 
 
 

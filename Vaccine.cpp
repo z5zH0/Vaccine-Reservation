@@ -14,7 +14,7 @@ Vaccine::~Vaccine()
 {
 }
 
-void Vaccine::print() const
+void Vaccine::print() const //출력
 {
 	cout << setw(18) << right << setfill(' ') << institution << " ";
 	cout << Vsort << " ";
@@ -24,30 +24,30 @@ void Vaccine::print() const
 
 }
 
-void Vaccine::getInstitution() const
+string Vaccine::getInstitution() const //기관명 접근자
 {
-	cout << institution << endl;
+	return institution;
 }
-void Vaccine::getVSort() const
+string Vaccine::getVSort() const //백신 종류 접근자
 {
-	cout << Vsort << endl;
+	return Vsort;
 }
-void Vaccine::getDate() const
+string Vaccine::getDate() const //날짜 접근자
 {
-	cout << date << endl;
+	return date;
 }
-void Vaccine::getTime() const
+string Vaccine::getTime() const //시간 접근자
 {
-	cout << time << endl;
+	return time;
 }
 
-bool Vaccine::isModerna() const
+bool Vaccine::isModerna() const //모더나 백신 체크
 {
 	if (Vsort == "모더나") return true;
 	else return false;
 }
 
-bool Vaccine::isPfizer() const
+bool Vaccine::isPfizer() const //화이자 백신 체크
 {
 	if (Vsort == "화이자") return true;
 	else return false;
